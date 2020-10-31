@@ -1,0 +1,76 @@
+﻿# The script of the game goes in this file.
+
+# Declare characters used by this game. The color argument colorizes the
+# name of the character.
+
+define e = Character("Shrek")
+define d=Character("Dave Mustaine")
+define flash = Fade(0.1, 0.0, 0.5, color="#fff")
+
+
+init python:
+    define.move_transitions("ease", 60.0)
+    
+# The game starts here.
+
+label start:
+
+    # Show a background. This uses a placeholder by default, but you can
+    # add a file (named either "bg room.png" or "bg room.jpg") to the
+    # images directory to show it.
+
+    scene bg room
+
+    # This shows a character sprite. A placeholder is used, but you can
+    # replace it by adding a file named "eileen happy.png" to the images
+    # directory.
+    
+    show run_animation at truecenter with flash
+    
+    "jeff"
+    
+    
+
+    show shrek sad behind run_animation with easeinright
+    
+    hide run_animation
+
+
+    e "WHAT ARE YOU DOING IN MY SWAMP!?"
+    
+    show shrek happy with dissolve
+    #call prologue crashes the game, not sure why
+    e "This is the part, where you run away!"
+    
+    "Shrek has told me to run away, what should I do?"
+    
+    show dave panning
+    
+    "Is that you dave mustaine?"
+    
+    show dave with flash
+    
+    "cool"
+    
+    d"Tell me son, what is it that you need?"
+    
+    menu:
+        "What do I ask from Dave Mustaine?"
+        
+        "Wow you look strong let's have a guitar battle!":
+            d"Yes my son, we shall duel."
+            
+        "I need you to beat Shreks legendary drop A guitar riffs!":
+                d"Yes my child."
+                hide dave
+                jump riff
+    
+label riff:
+    show dave at left
+    show shrek worry at right with flash
+    d"Hope you use D'addario NYXL strings, the only strings that can stay in tune for months on end and never break!"
+    
+
+    # This ends the game.
+
+    return
